@@ -75,7 +75,6 @@
         <assemble src="OS9p1" home="gimix" verify="fc8df0c641cc8411069476e09da83560"/>
         <assemble src="OS9p2" home="gimix" verify="4620b5340979f69d3d243c07592ec200"/>
         <assemble src="OS9p2_ed5" home="gimix" verify="45f1fe6f5203175a81a46ea82a5e16bb"/>
-
     </target>
 
     <!-- Level I kernel modules (common) -->
@@ -211,11 +210,38 @@
 
     <!-- CMS 9639 -->
     <target name="cms9639" depends="prepare">
-        <assemble src="OS9p1_ed12" home="cms9639"  verify="c62663295a8df03e8d370e1f2c9c2eb1"/>
-        <assemble src="Boot" home="cms9639"  verify="921665455cf8e35d2e966368706e72f8"/>
+        <copy file="${os9dir}/dragon128/OS9p2_ed13.asm" tofile="${os9dir}/cms9639/OS9p2_ed13.asm"/>
+        <copy file="${os9dir}/kernel/Acia51_ed6.asm"    tofile="${os9dir}/cms9639/Acia51_ed6.asm"/>
+        <copy file="${os9dir}/dragon128/IOMan_ed10.asm" tofile="${os9dir}/cms9639/IOMan_ed10.asm"/>
+        <copy file="${os9dir}/dragon128/Shell_ed21.asm" tofile="${os9dir}/cms9639/Shell_ed21.asm"/>
+        <copy file="${os9dir}/positron9000/SCF.asm"     tofile="${os9dir}/cms9639/SCF_ed2.asm"/>
+        <copy file="${os9dir}/positron9000/RBF.asm"     tofile="${os9dir}/cms9639/RBF_ed2.asm"/>
+        <copy file="${os9dir}/kernel/ClockL2_ed3.asm"   tofile="${os9dir}/cms9639/ClockL2_ed3.asm"/>
+        
+        <assemble src="OS9p1_ed12" home="cms9639" verify="c62663295a8df03e8d370e1f2c9c2eb1"/>
+        <assemble src="Boot"       home="cms9639"  verify="921665455cf8e35d2e966368706e72f8"/>
         <assemble src="9639_OS92.rom" home="cms9639" verify="5529810dedff592bceba4ddf662fbed5"/>
-        <assemble src="OS9p2" home="cms9639"  verify="af222dd85b64d4c73a8972691268fb36"/>
-        <assemble src="Clock" home="cms9639"  verify=""/>
+        <assemble src="OS9p2_ed13" home="cms9639" verify="af222dd85b64d4c73a8972691268fb36"/>
+        <assemble src="Init"       home="cms9639" verify="8182c62277cbb4c924f9b6fc8e839d33"/>
+        <assemble src="IOMan_ed10" home="cms9639" verify="808b9514b7a154985194bc02b0a7e89d"/>
+        <assemble src="SysGo"      home="dragon128" verify=""/>
+        <assemble src="RBF_ed2"    home="cms9639" verify="2e81752ebd6658e1c68e6a3f74ecaf5d"/>
+        <assemble src="SCF_ed2"    home="cms9639" verify="43de9839d3df194c0394606e1757a398"/>
+        <assemble src="Acia51_ed6" home="cms9639" verify="1b5a16df7dc791dca2f585679540b862"/>
+        <assemble src="Term"       home="cms9639" verify="ef9de3ec9aff4b0e7a513d20e2df056e"/>
+        <assemble src="Shell_ed21" home="cms9639" verify="2b2ebc08ab917606d4e48f53bd86af03"/>
+        <assemble src="Pipe"       home="kernel" verify="9cc9561b6e28188550ee25a4c32216f0"/>
+        <assemble src="PipeMan"    home="kernel" verify="023c67977a1946c1d2804d84e7e595d9"/>
+        <assemble src="Piper"      home="kernel" verify="c62010913ea02b2e606785c1521233d3"/>
+        <assemble src="ClockL2_ed3" home="cms9639"/>
+        
+        <delete  file="${os9dir}/cms9639/OS9p2_ed13.asm"/>
+        <delete  file="${os9dir}/cms9639/Acia51_ed6.asm"/>
+        <delete  file="${os9dir}/cms9639/IOMan_ed10.asm"/>
+        <delete  file="${os9dir}/cms9639/Shell_ed21.asm"/>
+        <delete  file="${os9dir}/cms9639/SCF_ed2.asm"/>
+        <delete  file="${os9dir}/cms9639/RBF_ed2.asm"/>
+        <delete  file="${os9dir}/cms9639/ClockL2_ed3.asm"/>
     </target>
 
     <!-- Positron 9000 -->

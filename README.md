@@ -1,3 +1,7 @@
+# This Fork
+
+This fork adds a working os9 build for a CMS9639 system including the boot ROM.
+ 
 # Retrocomputing: A Java-based 6809 emulator
 
 The purpose of this project is to create an 6809 emulator that can

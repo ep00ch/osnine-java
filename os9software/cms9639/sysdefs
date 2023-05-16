@@ -1,0 +1,63 @@
+ opt -l
+ ttl System Type Definitions for cms9639
+ page
+****************************************
+
+ ifeq CPUType-CMS9639
+
+
+
+***************
+*
+* If the I/O is addressed whenever the top
+* address lines of the micro, (ie the logical
+* bus), take a certain value, rather than being
+* addressed through the DAT, then MappedIO must
+* be set false (0)
+MappedIO equ 1
+*
+***************
+
+
+***************
+* Registers for MMU
+
+DAT.PB equ $FFA0 SWI2 POSTBYTE REGISTER
+
+DMA.STSK equ $FFB8 DMA SOURCE TASK REGISTER
+DMA.DTSK equ $FFB9 DMA DESTINATION TASK REGISTER
+
+DAT.OS equ $FFBA OS TASK REGISTER
+DAT.USR equ $FFBB USER TASK REGISTER
+DAT.CTRL equ $FFBC CONTROL SWITCHES
+
+
+DMA.SAD equ $FFC0 DMAC SOURCE ADDRESS REGISTER
+DMA.SBC equ $FFC2 DMAC SOURCE BYTE COUNT REGISTER
+DMA.DAD equ $FFC4 DMAC DESTINATION ADDRESS REGISTER
+DMA.DBC equ $FFC6 DMAC DESTINATION BYTE COUNT REGISTER
+DMA.SCH equ $FFD0 DMAC SOURCE CHANNEL CONTROL REGISTER
+DMA.DCH equ $FFD1 DMAC DESTINATION CHANNEL CONTROL REGISTER
+DMA.PRIC equ $FFD4 DMAC PRIORITY CONTROL REGISTER
+DMA.INTC equ $FFD5 DMAC INTERRUPT CONTROL REGISTER
+DMA.DATC equ $FFD6 DMAC DATA CHAIN REGISTER
+
+
+
+* External Disk Drive registers
+EXTDEVC equ $FF80
+EXTDEVD equ $FF81
+
+
+**********
+* Several system modules expect to be
+* able to abort the startup procedure
+* and retry, by jumping through a ROM
+* vector (usually the reset vector).
+*
+D$REBOOT equ $FFFE use an unused vector
+*
+
+ endc
+ opt l
+
